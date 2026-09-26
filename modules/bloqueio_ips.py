@@ -43,8 +43,15 @@ SUBNETES_HOMOLOGADAS = [
     "24.105.0.0/18",   # Blizzard US West / WoW Game Servers
     "37.244.0.0/16",   # Blizzard Europe
     "185.60.112.0/22", # Blizzard Authentication & CDN
-    "213.248.126.0/24",# Blizzard Core Infrastructure  
-    
+    "213.248.126.0/24",# Blizzard Core Infrastructure
+    # 🎯 VACINA DE CONEXÃO DO GITHUB / FASTLY
+    "140.82.112.0/20", "185.199.108.0/22", "146.75.0.0/17", "151.101.0.0/16",
+
+    # 🟦 INFRAESTRUTURA E VALIDAÇÃO DA MICROSOFT / AZURE (Adicione este bloco)
+    "40.76.0.0/14"      # Cobre o range de IPs de telemetria e core do Azure/MS (incluindo o 40.84.82.2)
+
+  
+   
     # --- PROXIES E CDN CLOUDFLARE ---
     "103.21.244.0/22", "103.22.200.0/22", "103.31.4.0/22", "104.16.0.0/13",
     "108.162.192.0/18", "131.0.72.0/22", "141.101.64.0/18", "162.158.0.0/15",
