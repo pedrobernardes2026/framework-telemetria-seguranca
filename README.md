@@ -34,77 +34,91 @@ Below is the complete structural blueprint mapping the exact files and directori
 
 
 
+\# Residential and Enterprise Telemetry \& Defensive Security Framework
+
+
+
+An advanced Python-based framework for real-time hardware telemetry and network perimeter auditing/mitigation, featuring integration with Windows Defender Firewall. ## 🗂️ Updated Directory Structure
+
+
+
+The complete architectural tree for the `ProjetoPythonbackupatt` project, including the `seguranca.py` module, properly positioned:
+
+
+
 ```text
 
 ProjetoPythonbackupatt/
 
 │
 
-├── ambiente\_estavel/          # Isolated virtual environment (Python Executable \& Dependencies)
+├── ambiente\_estavel/          # Isolated virtual environment
 
 │   ├── Include/
 
-│   ├── Lib/site-packages/     # CustomTkinter, Psutil, ReportLab, etc.
+│   ├── Lib/site-packages/     # Dependencies (CustomTkinter, Psutil, etc.)
 
-│   └── Scripts/               # Activation scripts (activate.bat)
-
-│
-
-├── modules/                   # Core Analytical \& Cybersecurity Subsystems
-
-│   ├── \_\_pycache\_\_/           # Compiled bytecode cache files
-
-│   ├── alertas.py             # Event verification and warning module
-
-│   ├── aurera.py              # Application module analytics
-
-│   ├── auditoria\_global.py    # System-wide compliance and event logging
-
-│   ├── bloqueio\_ips.py        # Active network firewall block policy execution
-
-│   ├── diagnostico\_rede.py    # Remote socket inspector and packet monitor
-
-│   ├── historico.py           # In-memory circular buffer data persistent engine
-
-│   ├── historico\_conexoes.py  # Network route persistence and history database
-
-│   ├── integridade.py         # Module SHA-256 cryptographic signature validator
-
-│   ├── interface.py           # CustomTkinter UI \& Live Neon Terminal implementation (368 lines)
-
-│   ├── monitor.py             # CPU, RAM, and Disk hardware performance telemetrist
-
-│   ├── monitor\_rede.py        # Sub-interface throughput analyst
-
-│   ├── notificacao\_email.py   # Asynchronous SMTP alert communication dispatch
-
-│   ├── process\_watchdog.py    # Core Kernel process scanner and father-PID watchdog
-
-│   ├── processos.py           # Memory concurrent top process ranker
-
-│   ├── rede.py                # Global socket network mapper
-
-│   ├── relatorio.py           # ReportLab dynamic enterprise PDF compilation engine
-
-│   ├── saude.py               # Host stability and health coefficient calculator
-
-│   └── system\_services.py     # Process purger and automation services
+│   └── Scripts/               # Activation scripts
 
 │
 
-├── Logs/                      # Local audit trail folder
+├── modules/                   # Analysis and security subsystems
 
-│   └── monitoramento.txt      # Text logs recording live mitigated network vectors
+│   ├── \_\_pycache\_\_/
+
+│   ├── alertas.py
+
+│   ├── aurera.py
+
+│   ├── auditoria\_global.py
+
+│   ├── bloqueio\_ips.py
+
+│   ├── diagnostico\_rede.py
+
+│   ├── historico.py
+
+│   ├── historico\_conexoes.py
+
+│   ├── integridade.py
+
+│   ├── interface.py
+
+│   ├── monitor.py
+
+│   ├── monitor\_rede.py
+
+│   ├── notificacao\_email.py
+
+│   ├── process\_watchdog.py
+
+│   ├── processos.py
+
+│   ├── rede.py
+
+│   ├── relatorio.py
+
+│   ├── saude.py
+
+│   ├── seguranca.py           # Integrity analyzer and security inspector
+
+│   └── system\_services.py
 
 │
 
-├── .gitignore                 # Exclusion configuration file (Build, Dist, and EXE tracking shield)
+├── Logs/
 
-├── icone\_guardiao.ico         # Custom high-resolution brand asset identity visual icon
+│   └── monitoramento.txt
 
-├── main.py                    # Core Framework Orchestrator and Asynchronous Boot Loader
+│
 
-└── README.md                  # Project structural documentation file
+├── .gitignore
+
+├── icone\_guardiao.ico
+
+├── main.py
+
+└── README.md
 
 ```
 
