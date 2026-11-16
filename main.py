@@ -1,3 +1,6 @@
+from modules.otimizador_firefox import otimizar_e_auditar_firefox
+from modules.monitor_abas_rede import iniciar_monitor_abas_background
+from modules.higienizador_rede import higienizar_rede_e_proteger
 """
 Framework Core: Módulo de Inicialização, Orquestração Assíncrona e Interface Gráfica.
 Projeto PB Framework - Telemetria e Auditoria de Segurança Residente - Moreno
@@ -33,7 +36,7 @@ def verificar_privilegios_admin() -> bool:
         return ctypes.windll.shell32.IsUserAnAdmin() != 0
     except Exception:
         return False
-
+    
 def loop_monitoramento_automatico(intervalo_segundos: int = 5):
     """
     Executa a verificação cíclica em uma thread isolada para mapeamento
@@ -72,10 +75,21 @@ def loop_monitoramento_automatico(intervalo_segundos: int = 5):
                                     app.logar_evento_terminal(msg_intrusao)
                                     app.logar_evento_terminal("[🔥] Executando purga brutal da raiz para liberar barramento...")
                                 
-                                # Aniquila o processo pai diretamente para quebrar o bloqueio de "Acesso Negado"
-                                subprocess.run(f"powershell -Command \"Stop-Process -Id {pid_pai} -Force\"", shell=True, capture_output=True)
-                                # Derruba a instância remanescente retida na memória RAM
-                                subprocess.run(f"powershell -Command \"Stop-Process -Id {pid_filho} -Force\"", shell=True, capture_output=True)
+                                # 🛡️ VACINA INVISÍVEL IMPLEMENTADA:
+                                # Adicionado creationflags=0x08000000 para suprimir e esconder as janelas de CMD no monitor
+                                subprocess.run(
+                                    f"powershell -Command \"Stop-Process -Id {pid_pai} -Force\"", 
+                                    shell=True, 
+                                    capture_output=True,
+                                    creationflags=0x08000000
+                                )
+                                # Derruba a instância remanescente retida na memória RAM em modo oculto
+                                subprocess.run(
+                                    f"powershell -Command \"Stop-Process -Id {pid_filho} -Force\"", 
+                                    shell=True, 
+                                    capture_output=True,
+                                    creationflags=0x08000000
+                                )
                     except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
                         continue
 
@@ -95,7 +109,7 @@ def loop_monitoramento_automatico(intervalo_segundos: int = 5):
                 # Se o jogo estiver fechado, mantém o ritmo padrão de patrulha pesada de 5 segundos
                 cadencia_atual = intervalo_segundos
 
-            # 🚀 ISOLAMENTO INTELIGNETE: Só invoca a mitigação activa de blocos se o jogo NÃO estiver aberto
+            # 🚀 ISOLAMENTO INTELIGENTE: Só invoca a mitigação ativa de blocos se o jogo NÃO estiver aberto
             if not status_jogo["ativo"]:
                 resultado = bloquear_ips_suspeitos()
 
@@ -125,6 +139,8 @@ def loop_monitoramento_automatico(intervalo_segundos: int = 5):
 # PONTO DE ENTRADA PRINCIPAL DO FRAMEWORK (APPLICATION BOOT)
 # =============================================================================
 if __name__ == "__main__":
+    otimizar_e_auditar_firefox()
+    higienizar_rede_e_proteger()
     # 🎯 FIX FORK LOOP: Linha compulsória colocada obrigatoriamente no início absoluto do boot
     multiprocessing.freeze_support()
 
@@ -148,7 +164,7 @@ if __name__ == "__main__":
     app = SistemaAnalise()
 
     # 4. Inicialização do serviço assíncrono de segundo plano EM THREAD ISOLADA (Daemon)
-    # Roda DEPOIS da criação do objeto da janela para evitar o congelamento della interface visual (UI Lock)
+    # Roda DEPOIS da criação do objeto da janela para evitar o congelamento da interface visual (UI Lock)
     thread_seguranca = threading.Thread(
         target=loop_monitoramento_automatico, args=(5,), daemon=True
     )

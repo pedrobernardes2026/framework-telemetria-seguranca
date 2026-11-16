@@ -1,0 +1,33 @@
+{
+    "processos_prioritarios": [
+        "PointBlank.exe",
+        "client.exe",
+        "AldeiaOnline.exe"
+    ],
+    "portas_seguras": [
+        7171,
+        7172,
+        7173,
+        7174,
+        80,
+        8080,
+        7152,
+        7153,
+        7154,
+        443
+    ],
+    "intervalo_auditoria_segundos": 5,
+    "bloqueio_automatico_firewall": false,
+    "ips_permitidos": [
+        "161.129.183.119",
+        "15.204.223.166",
+        "45.40.99.161",
+        "136.176.65.9",
+        "151.243.137.87",
+        "147.135.31.150",
+        "208.92.232.88",
+        "161.129.183.126",
+        "15.204.222.47",
+        "45.134.9.251"
+    ]
+}
